@@ -5,51 +5,120 @@
 {% block content %}
 
 <div class="container-lg">
-    <div class="row m-1">
-        <div class="column col-12 col-sm-6">
-            <div class="m-1">
-                <div class="dropdown d-flex">
-                    <button class="btn btn-primary dropdown-toggle dropdown-toggle-split flex-grow-1" type="button" id="dropdownMenuComponent" data-bs-toggle="dropdown" aria-expanded="false">
-                      Select Component
+  <div class="row m-1">
+    <div class="column col-12 col-sm-6">
+      <div class="m-1">
+        <div class="dropdown d-flex mb-1">
+          <button class="btn btn-primary dropdown-toggle dropdown-toggle-split flex-grow-1" type="button" id="dropdownMenuComponent" data-bs-toggle="dropdown" aria-expanded="false">
+            Select Component
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark w-100" aria-labelledby="dropdownMenuComponent">
+            <li><a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Components</a></li>
+            <li><a class="dropdown-item" onclick="changeDrpdwnComponentTitle('Component 01')" href="#">Component 01</a></li>
+            <li><a class="dropdown-item" href="#" onclick="changeDrpdwnComponentTitle('Component 02')">Component 02</a></li>
+            <li><a class="dropdown-item" href="#" onclick="changeDrpdwnComponentTitle('Component 03')">Component 03</a></li>
+          </ul>
+        </div>
+        <nav>
+          <div class="d-flex flex-column flex-sm-row nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="flex-grow-1 nav-link active" id="nav-super-tab" data-bs-toggle="tab" data-bs-target="#nav-super" type="button" role="tab" aria-controls="nav-super" aria-selected="true">Super</button>
+
+            <button class="flex-grow-1 nav-link" id="nav-main-tab" data-bs-toggle="tab" data-bs-target="#nav-main" type="button" role="tab" aria-controls="nav-main" aria-selected="true">Main</button>
+
+            <button class="flex-grow-1 nav-link" id="nav-sub-tab" data-bs-toggle="tab" data-bs-target="#nav-sub" type="button" role="tab" aria-controls="nav-sub" aria-selected="true">Sub</button>
+          </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-super" role="tabpanel" aria-labelledby="nav-super-tab">
+            <!-- Start of layer accordion  -->
+            <div class="accordion accordion-flush" id="accordionFlushLayers">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-layerOne">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOneLayerOne" aria-expanded="false" aria-controls="flush-collapseOneLayerOne">
+                    Layer 01
+                  </button>
+                </h2>
+                <div id="flush-collapseOneLayerOne" class="accordion-collapse collapse" aria-labelledby="flush-layerOne" data-bs-parent="#accordionFlushLayers">
+                  <!-- Start of settings for layer 01 -->
+                  <div class="dropdown d-flex">
+                    <button class="btn btn-primary dropdown-toggle dropdown-toggle-split flex-grow-1" type="button" id="drpdwnMenuMat" data-bs-toggle="dropdown" aria-expanded="false">
+                      Select Material
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-dark w-100" aria-labelledby="dropdownMenuComponent">
+                    <ul class="dropdown-menu dropdown-menu-dark w-100" aria-labelledby="drpdwnMenuMat">
                       <li><a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Components</a></li>
-                      <li><a class="dropdown-item" onclick="changeDropdownText('Item 01')" href="#">Item 01</a></li>
-                      <li><a class="dropdown-item" href="#" onclick="changeDropdownText('Item 02')">Item 02</a></li>
-                      <li><a class="dropdown-item" href="#" onclick="changeDropdownText('Item 03')">Item 03</a></li>
+                      <li><a class="dropdown-item" onclick="changeDrpdwnMaterialText('Material 01')" href="#">Material 01</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="changeDrpdwnMaterialText('Material 02')">Material 02</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="changeDrpdwnMaterialText('Material 03')">Material 03</a></li>
                     </ul>
                   </div>
-                <nav >
-                    <div class="d-flex flex-column flex-sm-row nav nav-tabs" id="nav-tab" role="tablist">
-                        <button class="flex-grow-1 nav-link active" id="nav-super-tab" data-bs-toggle="tab" data-bs-target="#nav-super" type="button" role="tab" aria-controls="nav-super" aria-selected="true">Super</button>
-
-                        <button class="flex-grow-1 nav-link" id="nav-main-tab" data-bs-toggle="tab" data-bs-target="#nav-main" type="button" role="tab" aria-controls="nav-main" aria-selected="true">Main</button>
-
-                        <button class="flex-grow-1 nav-link" id="nav-sub-tab" data-bs-toggle="tab" data-bs-target="#nav-sub" type="button" role="tab" aria-controls="nav-sub" aria-selected="true">Sub</button>
-                    </div>
-                </nav>
-                <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active p-3" id="nav-super" role="tabpanel" aria-labelledby="nav-super-tab">
-                        layers
-                    </div>
-                    <div class="tab-pane fade p-3" id="nav-main" role="tabpanel" aria-labelledby="nav-main-tab">
-                        layers
-                    </div>
-                    <div class="tab-pane fade p-3" id="nav-sub" role="tabpanel" aria-labelledby="nav-sub-tab">
-                        layers
-                    </div>
+                  <div class="dropdown d-flex">
+                    <button class="btn btn-primary dropdown-toggle dropdown-toggle-split flex-grow-1" type="button" id="drpdwnMenuType" data-bs-toggle="dropdown" aria-expanded="false">
+                      Select Type
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark w-100" aria-labelledby="drpdwnMenuType">
+                      <li><a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Types</a></li>
+                      <li><a class="dropdown-item" onclick="changeDrpdwnTypeText('Type 01')" href="#">Type 01</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="changeDrpdwnTypeText('Type 02')">Type 02</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="changeDrpdwnTypeText('Type 03')">Type 03</a></li>
+                    </ul>
+                  </div>
+                  <div class="dropdown d-flex">
+                    <button class="btn btn-primary dropdown-toggle dropdown-toggle-split flex-grow-1" type="button" id="drpdwnMenuFunction" data-bs-toggle="dropdown" aria-expanded="false">
+                      Select Function
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark w-100" aria-labelledby="drpdwnMenuFunction">
+                      <li><a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Functions</a></li>
+                      <li><a class="dropdown-item" onclick="changeDrpdwnFuncText('Function 01')" href="#">Function 01</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="changeDrpdwnFuncText('Function 02')">Function 02</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="changeDrpdwnFuncText('Function 03')">Function 03</a></li>
+                    </ul>
+                  </div>
+                  <!-- End of settings for layer 01 -->
                 </div>
-            </div>
-        </div>
-        <div class="column col-12 col-sm-6 border">
-            <div class="h-100 d-flex align-items-center justify-content-center">
-                <div>
-                    SVG
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                    Layer 02
+                  </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushLayers">
+                  <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
                 </div>
-            </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThree">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                    Layer 03
+                  </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushLayers">
+                  <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+                </div>
+              </div>
+              </div>
+              <!-- End of layer accordion -->
+          </div>
+          <div class="bg-primary d-flex align-items-center justify-content-center text-black p-2 border" style="border-radius: 0 0 0.5rem 0.5rem;">
+            <div class="bg-dark text-white" style="width: 1.5rem; height: 1.5rem; border-radius: 0.75rem;">+</div>
+          </div>
+          <div class="tab-pane fade p-3" id="nav-main" role="tabpanel" aria-labelledby="nav-main-tab">
+            layers
+          </div>
+          <div class="tab-pane fade p-3" id="nav-sub" role="tabpanel" aria-labelledby="nav-sub-tab">
+            layers
+          </div>
         </div>
+      </div>
     </div>
-
+    <div class="column col-12 col-sm-6 border">
+      <div class="h-100 d-flex align-items-center justify-content-center">
+        <div>
+          SVG
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock %}
