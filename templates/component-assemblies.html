@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block title %}BuildSystems{% endblock %}
+
+{% block content %}
+    <br>
+    <div class="container">
+        <div class="row justify-content-lg-center">
+            <div class="col col-sm-4 col-12">
+                <h3>Super</h3>
+                <select name="assembly" id="assembly">
+                    {% for assembly in assembly_ids %}
+                    <option value="{{ assembly }}">{{ assembly }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <br>
+            <div class="col col-sm-4 col-12">
+                <h3>Main</h3>
+                <select name="assembly" id="assembly">
+                    {% for assembly in assembly_ids %}
+                    <option value="{{ assembly }}">{{ assembly }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <br>
+            <div class="col col-sm-4 col-12">
+                <h3>Sub</h3>
+                <select name="assembly" id="assembly">
+                    {% for assembly in assembly_ids %}
+                    <option value="{{ assembly }}">{{ assembly }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+    <br>
+{% endblock %}

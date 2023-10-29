@@ -1,0 +1,31 @@
+header {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+/* Custom CSS for the logo */
+.logo {
+    width: 150px; /* Default width for larger screens */
+}
+  
+/* Media query for screens smaller than small (576px) */
+@media (max-width: 575.98px) {
+    .logo {
+        width: 50%; /* Fill the whole div space */
+    }
+}
+
+body {
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.dropdown-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+*:focus {
+    box-shadow: none !important;
+}

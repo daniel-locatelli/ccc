@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+
+{% block title %}BuildSystems{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row m-2">
+        <div class="column col-12 col-sm-6">
+            <div class="m-2">
+                <div class="dropdown d-flex">
+                    <button class="btn btn-primary dropdown-toggle dropdown-toggle-split flex-grow-1" type="button" id="dropdownMenuComponent" data-bs-toggle="dropdown" aria-expanded="false">
+                      Component
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuComponent">
+                      <li><a class="dropdown-item" onclick="changeDropdownText('Item 01')" href="#">Item 01</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="changeDropdownText('Item 02')">Item 02</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="changeDropdownText('Item 03')">Item 03</a></li>
+                    </ul>
+                  </div>
+                <nav >
+                    <div class="d-flex flex-column flex-sm-row nav nav-tabs" id="nav-tab" role="tablist">
+                        <button class="flex-grow-1 nav-link active" id="nav-super-tab" data-bs-toggle="tab" data-bs-target="#nav-super" type="button" role="tab" aria-controls="nav-super" aria-selected="true">Super</button>
+
+                        <button class="flex-grow-1 nav-link" id="nav-main-tab" data-bs-toggle="tab" data-bs-target="#nav-main" type="button" role="tab" aria-controls="nav-main" aria-selected="true">Main</button>
+
+                        <button class="flex-grow-1 nav-link" id="nav-sub-tab" data-bs-toggle="tab" data-bs-target="#nav-sub" type="button" role="tab" aria-controls="nav-sub" aria-selected="true">Sub</button>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active p-3" id="nav-super" role="tabpanel" aria-labelledby="nav-super-tab">
+                        <h2>Super</h2>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium architecto quo assumenda iusto quaerat, cum doloremque ducimus nisi eius soluta temporibus ipsum, tenetur rem nulla dignissimos! Quibusdam impedit dolor labore.</p>
+                    </div>
+                    <div class="tab-pane fade p-3" id="nav-main" role="tabpanel" aria-labelledby="nav-main-tab">
+                        <h2>Main</h2>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium architecto quo assumenda iusto quaerat, cum doloremque ducimus nisi eius soluta temporibus ipsum, tenetur rem nulla dignissimos! Quibusdam impedit dolor labore.</p>
+                    </div>
+                    <div class="tab-pane fade p-3" id="nav-sub" role="tabpanel" aria-labelledby="nav-sub-tab">
+                        <h2>Sub</h2>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium architecto quo assumenda iusto quaerat, cum doloremque ducimus nisi eius soluta temporibus ipsum, tenetur rem nulla dignissimos! Quibusdam impedit dolor labore.</p>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    Layer 01
+                </div>
+            </div>
+        </div>
+        <div class="column col-12 col-sm-6 col-md-8">
+            <div class="h-100 d-flex align-items-center justify-content-center">
+                <div>
+                    SVG
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
