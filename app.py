@@ -20,7 +20,7 @@ def index():
         return None
     else:
         return render_template("index.html")
-
+    
 
 @app.route("/component-assemblies", methods=["GET", "POST"])
 def assemblies():

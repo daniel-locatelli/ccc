@@ -1,23 +1,16 @@
-paragraph = document.getElementById("content");
 
-paragraph.innerHTML = "Changed!";
 
-function changeDrpdwnComponentTitle(text) {
-    document.getElementById('dropdownMenuComponent').textContent = text;
+function toggleMobileMenu() {
+    var test = document.querySelector("p");
+    
+    const hamburgerMenu = document.querySelector(".hamburger-icon");
+    hamburgerMenu.classList.toggle('color-hamburguer')
+    var mobileMenu = document.querySelector(".mobile-menu");
+    var currentStyle = mobileMenu.style.display;
+    
+    if (currentStyle === "none" || currentStyle === "") {
+        mobileMenu.style.display = "flex";
+    } else {
+        mobileMenu.style.display = "none";
+    }
 }
-
-
-function changeDrpdwnMaterialText(text) {
-    document.getElementById('drpdwnMenuMat').textContent = text;
-}
-
-
-function changeDrpdwnTypeText(text) {
-    document.getElementById('drpdwnMenuType').textContent = text;
-}
-
-
-function changeDrpdwnFuncText(text) {
-    document.getElementById('drpdwnMenuFunction').textContent = text;
-}
-

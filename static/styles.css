@@ -1,43 +1,237 @@
+/* https://www.youtube.com/watch?v=Qhaz36TZG5Y */
+
+/* For responsive behavior use MIN MAX. Ex:
+    article {
+        width: clamp(200px, 50%, 600px);
+    }
+*/
+
+/* Keeping aspect ratio:
+    video {
+        width: 100%;
+        aspect-ratio: 16/9;
+    }
+*/
+
+/* Possible to do calculations
+    width: calc(100vw - 80px);
+    font-size: calc(1rem * 1.25);
+    padding: calc(5% + 2px);
+*/
+
+/* Counter
+    :root {
+        counter-reset: headings;
+    }
+
+    h1 {
+        counter-increment: headings;
+    }
+
+    h1::before {
+        content: counter(headings);
+*/
+
+/* Focus psudoclasses
+ .dropdown {
+    opacity: 0;
+    visibility: hidden;
+ }
+*/
+
+/* Making the css work across browsers
+ PostCSS has a tool called Autoprefixer
+ https://postcss.org/
+*/
+
+/* New units:
+ vh = viewport height in %
+ vw = viewport width in %
+ dvh = dynamic viewport height in %, get viewport except scrolling bars and address field
+ dvw = "
+ svh = small viewport height, get the smallest part of viewport
+ svw = "
+
+ some browsers don't support the dynamic or small, so the solution could be
+ height = 100vh (supported for most)
+ height = 100svh (if supported this will overwrite the upper one, otherwise ignored)
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+:root {
+    --primary: #67E0D7;
+    --primary90: #67E0D7E5;
+    --secondary: #F55CAF;
+    --secondary80: #F55CAFCC;
+    --secondary35: #F55CAF59;
+    --secondary30: #F55CAF4D;
+    --bg-color: #222;
+}
+
+* {
+    box-sizing: border-box;
+    color: var(--primary);
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: "Montserrat", sans-serif;
+    background-color: var(--bg-color);
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    padding-left: 0;
+}
+
+li {
+    list-style: none;
+}
+
 header {
-    margin-top: 2%;
-    padding: 1%;
-}
-
-hr {
-    display: block;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    margin-left: auto;
-    margin-right: auto;
-    border-style: inset;
-    border-width: 1px;
-    width:25%;
-    margin: auto;
-  }
-
-/* Custom CSS for the logo */
-.logo {
-    width: 150px; /* Default width for larger screens */
-}
-  
-/* Media query for screens smaller than small (576px) */
-@media (max-width: 575.98px) {
-    .logo {
-        width: 50%; /* Fill the whole div space */
+    & .header-top {
+        display: grid;
+        /* grid-template-columns: repeat(auto-fit, minmax(30ch, 1fr)); */
+        grid-template-columns: auto max-content;
+        align-items: center;
+        background-color: #1a1a1a;
+        padding-top: 2svh;
+        padding-bottom: 2svh;
+        padding-left: 2svw;
+        padding-right: 2svw;
+        & .full-logo {
+            display: grid;
+            grid-template-columns: auto auto;
+            align-items: center;
+            justify-content: start;
+            & .logo {
+                & img {
+                    width: 130px;
+                    height: auto;
+                }
+            }
+            & .site-name{
+                width: min-content;
+                font-weight: 200;
+                font-size: 1rem;
+                margin-left: 1svw;
+                margin-right: 1svw;
+            }
+        }
+        & nav {
+            width: 100%;
+            & .menu {
+                display: flex;
+                justify-content: end;
+                gap: 1.5svw;
+                & li a:hover {
+                    color: var(--secondary);
+                    border-color: var(--secondary);
+                }
+            }
+        }
+    }
+    .mobile-menu {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        & li a {
+            transition: 0.1s;
+        }
+        & li {
+            width: 100%;
+            text-align: center;
+            padding: 4svh;
+            background-color: #333;
+        }
+        & li:hover {
+            background-color: var(--secondary);
+        }
     }
 }
 
-body {
-    text-align: center;
-    font-family: sans-serif;
+.hamburger-icon{
+    margin: auto 0;
+    display: none;
+    cursor: pointer;
+    & div{
+        width: 30px;
+        height: 2px;
+        border-radius: 1px;
+        background-color: var(--primary);
+        margin: 6px 0;
+        transition: 0.1s;
+    }
 }
 
-.dropdown-toggle {
+.color-hamburguer {
+    & div {
+        background-color: var(--secondary);
+    }
+}
+
+.open-mobile-menu {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+        & li a {
+            transition: 0.1s;
+        }
+        & li {
+            width: 100%;
+            text-align: center;
+            padding: 4svh;
+            background-color: #333;
+        }
+        & li:hover {
+            background-color: var(--secondary);
+        }
 }
 
-*:focus {
-    box-shadow: none !important;
+@media (max-width: 782px) {
+    header {
+        & .header-top {
+            & .full-logo {
+                & .logo {
+                    & img {
+                        width: 16.5vw;
+                    }
+                }
+                & .site-name{
+                    font-size: 2svw;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    header {
+        & .header-top {
+            grid-template: auto max-content;
+            & .full-logo {
+                & .logo {
+                    & img {
+                        width: 95px;
+                    }
+                }
+                & .site-name{
+                    font-size: 0.72rem;
+                }
+            }
+        }
+    }
+    .hamburger-icon {
+        display: block;
+    }
+    .hidden-mobile {
+        display: none;
+    }
 }
