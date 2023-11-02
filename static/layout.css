@@ -66,7 +66,9 @@
     --secondary80: #F55CAFCC;
     --secondary35: #F55CAF59;
     --secondary30: #F55CAF4D;
-    --bg-color: #222;
+    --bg-primary: #222;
+    --bg-secondary: #1a1a1a;
+    --bg-tertiary: #333;
 }
 
 * {
@@ -78,15 +80,11 @@
 
 html {
     font-family: "Montserrat", sans-serif;
-    background-color: var(--bg-color);
+    background-color: var(--bg-primary);
 }
 
 a {
     text-decoration: none;
-}
-
-ul {
-    padding-left: 0;
 }
 
 li {
@@ -96,10 +94,9 @@ li {
 header {
     & .header-top {
         display: grid;
-        /* grid-template-columns: repeat(auto-fit, minmax(30ch, 1fr)); */
         grid-template-columns: auto max-content;
         align-items: center;
-        background-color: #1a1a1a;
+        background-color: var(--bg-secondary);
         padding-top: 2svh;
         padding-bottom: 2svh;
         padding-left: 2svw;
@@ -107,33 +104,30 @@ header {
         & .full-logo {
             display: grid;
             grid-template-columns: auto auto;
-            align-items: center;
             justify-content: start;
             & .logo {
+                display: flex;
                 & img {
-                    width: 130px;
-                    height: auto;
+                    width: clamp(95px, 16.5svw, 130px);
                 }
             }
             & .site-name{
                 width: min-content;
                 font-weight: 200;
-                font-size: 1rem;
+                font-size: clamp(0.72rem, 2svw, 1rem);
                 margin-left: 1svw;
                 margin-right: 1svw;
             }
         }
-        & nav {
-            width: 100%;
-            & .menu {
-                display: flex;
-                justify-content: end;
-                gap: 1.5svw;
-                & li a:hover {
-                    color: var(--secondary);
-                    border-color: var(--secondary);
-                }
+        & nav .menu {
+            display: flex;
+            justify-content: end;
+            gap: 1.5svw;
+            & li a:hover {
+                color: var(--secondary);
+                border-color: var(--secondary);
             }
+            
         }
     }
     .mobile-menu {
@@ -141,16 +135,16 @@ header {
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        & li a {
-            transition: 0.1s;
-        }
-        & li {
+        & a {
             width: 100%;
             text-align: center;
             padding: 4svh;
-            background-color: #333;
+            background-color: var(--bg-tertiary);
+            & li {
+                transition: 0.1s;
+            }
         }
-        & li:hover {
+        & a:hover {
             background-color: var(--secondary);
         }
     }
@@ -176,58 +170,7 @@ header {
     }
 }
 
-.open-mobile-menu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-        & li a {
-            transition: 0.1s;
-        }
-        & li {
-            width: 100%;
-            text-align: center;
-            padding: 4svh;
-            background-color: #333;
-        }
-        & li:hover {
-            background-color: var(--secondary);
-        }
-}
-
-@media (max-width: 782px) {
-    header {
-        & .header-top {
-            & .full-logo {
-                & .logo {
-                    & img {
-                        width: 16.5vw;
-                    }
-                }
-                & .site-name{
-                    font-size: 2svw;
-                }
-            }
-        }
-    }
-}
-
 @media (max-width: 576px) {
-    header {
-        & .header-top {
-            grid-template: auto max-content;
-            & .full-logo {
-                & .logo {
-                    & img {
-                        width: 95px;
-                    }
-                }
-                & .site-name{
-                    font-size: 0.72rem;
-                }
-            }
-        }
-    }
     .hamburger-icon {
         display: block;
     }

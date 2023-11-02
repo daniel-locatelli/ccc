@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="select-arrow" viewBox="0 0 24 24">
+    <polyline points="19.07 8.46 12 15.54 4.93 8.46" fill="none"  stroke-miterlimit="10" stroke-width="2px"/>
+  </symbol>
+</svg>

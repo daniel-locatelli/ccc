@@ -2,6 +2,50 @@
 
 {% block title %}Circular Component Creator{% endblock %}
 
+{% block creator_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='creator.css') }}">
+{% endblock %}
+
 {% block content %}
+
+<div class="container">
+    <div class="settings">
+        <div class="select-container">
+            <select class="select-box">
+                <option disabled selected>Component</option>
+                <option value="Component01">Component01</option>
+                <option value="Component02">Component02</option>
+            </select>
+            <svg class="icon">
+                <use xlink:href="static/icons.svg#select-arrow" >
+            </svg>
+        </div>
+        <div class="assembly-menu">
+            <div class="super-assembly">
+                super
+            </div>
+            <div class="main-assembly">
+                main
+            </div>
+            <div class="sub-assembly">
+                sub
+            </div>
+        </div>
+        <div class="layer-tabs">
+            <!-- jinja looping through layers -->
+            <div class="layer-01">
+                layer-01
+            </div>
+            <div class="layer-02">
+                layer-02
+            </div>
+        </div>
+    </div>
+    <div class="viewport">
+    </div>
+    <div class="stats">
+
+    </div>
+</div>
 
 {% endblock %}

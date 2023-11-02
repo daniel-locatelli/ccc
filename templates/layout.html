@@ -5,8 +5,9 @@
   <meta name="viewport" content="initial-scale=1, width=device-width">
   <title>{% block title %}BuildSystems{% endblock %}</title>
   <link rel="icon" type="image/x-icon" href="/static/ccc_logo.svg">
+  {% block creator_css %}{% endblock %}
   
-  <link href="{{url_for('static', filename='styles.css')}}" rel="stylesheet">
+  <link href="{{url_for('static', filename='layout.css')}}" rel="stylesheet">
 </head>
 <body>
   <header role="banner">
@@ -28,18 +29,28 @@
           <li><a href="/about">About</a></li>
         </ul>
       </nav>
-      <div class="hamburger-icon" onclick="toggleMobileMenu()">
+      <div class="hamburger-icon">
         <div class="bar1"></div>
         <div class="bar2"></div>
         <div class="bar3"></div>
       </div>
     </div>
     <ul class="mobile-menu">
-      <li><a href="/">Home</a></li>
-      <li><a href="/creator">Creator</a></li>
-      <li><a href="/library">Library</a></li>
-      <li><a href="/references">References</a></li>
-      <li><a href="/about">About</a></li>
+      <a href="/">
+        <li>Home</li>
+      </a>
+      <a href="/creator">
+        <li>Creator</li>
+      </a>
+      <a href="/library">
+        <li>Library</li>
+      </a>
+      <a href="/references">
+        <li>References</li>
+      </a>
+      <a href="/about">
+        <li>About</li>
+      </a>
     </ul>
   </header>
   <main>
