@@ -2,7 +2,7 @@
 
 {% block title %}Circular Component Creator{% endblock %}
 
-{% block creator_css %}
+{% block extra_css %}
     <link rel="stylesheet" href="{{ url_for('static', filename='creator.css') }}">
 {% endblock %}
 
@@ -11,33 +11,53 @@
 <div class="container">
     <div class="settings">
         <div class="select-container">
-            <select class="select-box">
-                <option disabled selected>Component</option>
-                <option value="Component01">Component01</option>
-                <option value="Component02">Component02</option>
+            <label for="select-component">Component: </label>
+            <select class="tab" name="component-selector" id="select-component">
+                <option disabled selected>Select Component</option>
+                {% for component in component_ids %}
+                <option value="{{ component }}">{{ component }}</option>
+                {% endfor %}
             </select>
-            <svg class="icon">
+            <svg class="icon select-arrow">
                 <use xlink:href="static/icons.svg#select-arrow" >
             </svg>
         </div>
-        <div class="assembly-menu">
-            <div class="super-assembly">
-                super
+        <hr>
+        <nav class="assembly-menu">
+            <ul>
+                <li class="tab assembly-tab active-tab" id="super-assembly">Super</li>
+                <li class="tab assembly-tab" id="main-assembly">Main</li>
+                <li class="tab assembly-tab" id="sub-assembly">Sub</li>
+            </ul>
+        </nav>
+        <div class="layer-tab visible">
+            <!-- jinja looping through layers -->
+            <div class="tab layer-01">
+                layer-01 super
             </div>
-            <div class="main-assembly">
-                main
-            </div>
-            <div class="sub-assembly">
-                sub
+            <hr>
+            <div class="tab layer-02">
+                layer-02 super
             </div>
         </div>
-        <div class="layer-tabs">
+        <div class="layer-tab">
             <!-- jinja looping through layers -->
-            <div class="layer-01">
-                layer-01
+            <div class="tab layer-01">
+                layer-01 main
             </div>
-            <div class="layer-02">
-                layer-02
+            <hr>
+            <div class="tab layer-02">
+                layer-02 main
+            </div>
+        </div>
+        <div class="layer-tab">
+            <!-- jinja looping through layers -->
+            <div class="tab layer-01">
+                layer-01 sub
+            </div>
+            <hr>
+            <div class="tab layer-02">
+                layer-02 sub
             </div>
         </div>
     </div>
@@ -48,4 +68,8 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{{ url_for('static', filename='fetchComponent.js') }}"></script>
 {% endblock %}

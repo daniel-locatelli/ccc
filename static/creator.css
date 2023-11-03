@@ -1,64 +1,90 @@
 .container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);;
-    & .settings {
-        /* padding-top: 4svh;
-        padding-bottom: 4svh;
-        padding-left: 2svw;
-        padding-right: 2svw; */
-        grid-template-rows: repeat(3, 1fr);
-        background-color: var(--bg-secondary);
-        & .select-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            width: 100%;
-            & .select-box {
-                padding-top: 4svh;
-                padding-bottom: 4svh;
-                text-align: center;
-                border: none;
-                appearance: none;
-                width: 100%;
-                color: var(--primary);
-                background-color: var(--bg-tertiary);
-                font-size: 1rem;
-            }
-            & .icon {
-                width: clamp(16px, 50%, 32px);
-                stroke: var(--primary);
-            }
-        }
-        & .assembly-menu {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            align-items: center;
-            justify-content: center;
-            & .super-assembly {
-                display: flex;
-                justify-content: center;
-            }
-            & .main-assembly {
-                display: flex;
-                justify-content: center;
-            }
-            & .sub-assembly {
-                display: flex;
-                justify-content: center;
-            }
-        }
-        & .layer-tabs {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+}
+.settings {
+    grid-template-rows: repeat(3, 1fr);
+    background-color: var(--bg-secondary);
+}
+
+.select-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    & select {
+        border: none;
+        appearance: none;
+        color: var(--primary);
+        background-color: var(--bg-tertiary);
+        width: 100%;
+        font-size: 1rem;
+        font-family: "Montserrat", sans-serif;
+        & option {
+            background-color: var(--bg-primary);
         }
     }
 }
 
-.border {
-    border-style: solid;
-    border-width: 1px;
+label {
+        position: absolute;
+        left: clamp(1px, 1%, 5px);
+        top: clamp(1px, 1%, 5px);
+        font-size: clamp(0.5rem, 2svh, 0.7rem);
+    }
+
+.icon {
+    position: absolute;
+    right: clamp(1px, 0.5svw, 5px);
+    width: clamp(10px, 10%, 32px);
+    stroke: var(--primary);
+    pointer-events: none;
+    transition: transform 0.05s;
+}
+
+.rotate180 {
+    transform: rotate(180deg);
+}
+
+.tab {
+    padding-top: clamp(2px, 3svh, 15px);
+    padding-bottom: clamp(2px, 3svh, 15px);
+    text-align: center;
+}
+
+.active-tab {
+    color: var(--primary);
+    background-color: var(--bg-tertiary);
+}
+
+.layer-tab {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+.tab:hover {
+    cursor: pointer;
+    background-color: var(--bg-primary);
+    color: var(--secondary)
+}
+
+hr {
+    border: 0;
+    border-bottom: 1px dashed var(--bg-primary);
+    background: var(--bg-tertiary);
+}
+
+.assembly-menu {
+    & ul{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 @media (max-width: 576px) {

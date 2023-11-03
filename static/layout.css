@@ -78,6 +78,17 @@
     padding: 0;
 }
 
+body::-webkit-scrollbar {
+    width: 0.1rem;
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+}
+body::-webkit-scrollbar-thumb {
+    background: var(--primary);
+}
+
 html {
     font-family: "Montserrat", sans-serif;
     background-color: var(--bg-primary);
