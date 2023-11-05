@@ -13,8 +13,14 @@ selectComponent.addEventListener("change", function () {
     })
         .then(response => response.json())
         .then(data => {
-            string = JSON.stringify(data);
-            statsTemp.textContent = string;
+            // Add tabs
+            updateSuper(data);
+            updateMain(data);
+            updateSub(data);
+            // Add reactions
+            tabReactions();
+            // Add component properties to stats
+            addComponentProperties(data)
         })
         .catch(error => {
             console.error("Error:", error);

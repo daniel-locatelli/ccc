@@ -25,7 +25,7 @@ componentSelector.addEventListener("click", function() {
 
 // Assembly menu and layers
 var assemblyTabs = document.querySelectorAll('.assembly-tab');
-var assemblyLayers = document.querySelectorAll('.layer-tab');
+var assemblyLayers = document.querySelectorAll('.assembly-view');
 // Add event listeners to tabs
 assemblyTabs.forEach(function(tab, index) {
     tab.addEventListener('click', function() {

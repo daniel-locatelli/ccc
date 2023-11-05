@@ -1,10 +1,10 @@
 .container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);;
+    grid-template-columns: 1fr 2fr 1fr;
 }
 .settings {
     grid-template-rows: repeat(3, 1fr);
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-tertiary);
 }
 
 .select-container {
@@ -17,7 +17,7 @@
         border: none;
         appearance: none;
         color: var(--primary);
-        background-color: var(--bg-tertiary);
+        background-color: var(--bg-secondary);
         width: 100%;
         font-size: 1rem;
         font-family: "Montserrat", sans-serif;
@@ -48,17 +48,18 @@ label {
 }
 
 .tab {
-    padding-top: clamp(2px, 3svh, 15px);
-    padding-bottom: clamp(2px, 3svh, 15px);
+    padding-top: clamp(2px, 2svh, 15px);
+    padding-bottom: clamp(2px, 2svh, 15px);
     text-align: center;
+    user-select: none;
 }
 
 .active-tab {
     color: var(--primary);
-    background-color: var(--bg-tertiary);
+    background-color: var(--bg-secondary);
 }
 
-.layer-tab {
+.assembly-view {
     display: none;
 }
 
@@ -72,12 +73,6 @@ label {
     color: var(--secondary)
 }
 
-hr {
-    border: 0;
-    border-bottom: 1px dashed var(--bg-primary);
-    background: var(--bg-tertiary);
-}
-
 .assembly-menu {
     & ul{
         display: grid;
@@ -85,6 +80,67 @@ hr {
         align-items: center;
         justify-content: center;
     }
+}
+
+.properties-table {
+    display: grid;
+    padding-left: 1svw;
+    padding-right: 1svw;
+    padding-top: 1svh;
+    padding-bottom: 1svh;
+    background-color: var(--bg-secondary);
+    grid-template-columns: 1fr 1fr;
+    & div p {
+        padding-bottom: 2%;
+    }
+    border-bottom: 1px dotted var(--secondary);
+}
+
+h4 {
+    font-weight: 200;
+}
+
+.filters {
+    padding-left: 1svw;
+    padding-right: 1svw;
+    padding-top: 1svh;
+    padding-bottom: 5svh;
+    background-color: var(--bg-secondary);
+    /* border-bottom: 1px dotted var(--secondary); */
+    & h2 {
+        font-weight: 200;
+        font-size: 1rem;
+    }
+}
+
+.viewport {
+    height: min-content;
+    background-color: var(--bg-secondary);
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    height: min-content;
+    background-color: var(--bg-secondary);
+}
+
+.add-layer {
+    font-size: 1.5rem;
+}
+
+.key-value-comp {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-left: 0.5svw;
+    padding-right: 0.5svw;
+    padding-top: 0.5svh;
+    padding-bottom: 0.5svh;
+    gap: 1svw;
+}
+
+.key-value-comp p:first-child {
+    text-align: right;
 }
 
 @media (max-width: 576px) {

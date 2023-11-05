@@ -7,11 +7,13 @@
 {% endblock %}
 
 {% block content %}
-
+<div class="filters">
+    <h2>Filters </h2>
+</div>
 <div class="container">
     <div class="settings">
         <div class="select-container">
-            <label for="select-component">Component: </label>
+            <!-- <label for="select-component">Component: </label> -->
             <select class="tab" name="component-selector" id="select-component">
                 <option disabled selected>Select Component</option>
                 {% for component in component_ids %}
@@ -22,54 +24,83 @@
                 <use xlink:href="static/icons.svg#select-arrow" >
             </svg>
         </div>
-        <hr>
         <nav class="assembly-menu">
             <ul>
-                <li class="tab assembly-tab active-tab" id="super-assembly">Super</li>
-                <li class="tab assembly-tab" id="main-assembly">Main</li>
-                <li class="tab assembly-tab" id="sub-assembly">Sub</li>
+                <li title="Super-assembly of component" class="tab assembly-tab active-tab" id="super-assembly">Super</li>
+                <li title="Main-assembly of component" class="tab assembly-tab" id="main-assembly">Main</li>
+                <li title="Sub-assembly of component" class="tab assembly-tab" id="sub-assembly">Sub</li>
             </ul>
         </nav>
-        <div class="layer-tab visible">
-            <!-- jinja looping through layers -->
-            <div class="tab layer-01">
-                layer-01 super
+        <div class="assembly-view visible">
+            <div class="properties-table">
+                <div class="property-name">
+                    <p title="Assembly ID">ID</p>
+                    <p title="Assembly category">Category</p>
+                    <p title="Assembly thickness">Thickness [m]</p>
+                </div>
+                <div class="property-super">
+                    <p class="prop-super-id">-</p>
+                    <p class="prop-super-category">-</p>
+                    <p class="prop-super-thickness meters">-</p>
+                </div>
             </div>
-            <hr>
-            <div class="tab layer-02">
-                layer-02 super
-            </div>
+            <nav class="layers-view">
+                <ul class="layers-super">
+                    <!-- super layers will come here -->
+                </ul>
+            </nav>
+            <div title="Add layer" class="tab add-layer">+</div>
         </div>
-        <div class="layer-tab">
-            <!-- jinja looping through layers -->
-            <div class="tab layer-01">
-                layer-01 main
+        <div class="assembly-view">
+            <div class="properties-table">
+                <div class="property-name">
+                    <p title="Assembly ID">ID</p>
+                    <p title="Assembly category">Category</p>
+                    <p title="Assembly thickness">Thickness [m]</p>
+                </div>
+                <div class="property-main">
+                    <p class="prop-main-id">-</p>
+                    <p class="prop-main-category">-</p>
+                    <p class="prop-main-thickness meters">-</p>
+                </div>
             </div>
-            <hr>
-            <div class="tab layer-02">
-                layer-02 main
-            </div>
+            <nav class="layers-view">
+                <ul class="layers-main">
+                    <!-- super layers will come here -->
+                </ul>
+            </nav>
+            <div title="Add layer" class="tab add-layer">+</div>
         </div>
-        <div class="layer-tab">
-            <!-- jinja looping through layers -->
-            <div class="tab layer-01">
-                layer-01 sub
+        <div class="assembly-view">
+            <div class="properties-table">
+                <div class="property-name">
+                    <p title="Assembly ID">ID</p>
+                    <p title="Assembly category">Category</p>
+                    <p title="Assembly thickness">Thickness [m]</p>
+                </div>
+                <div class="property-sub">
+                    <p class="prop-sub-id">-</p>
+                    <p class="prop-sub-category">-</p>
+                    <p class="prop-sub-thickness meters">-</p>
+                </div>
             </div>
-            <hr>
-            <div class="tab layer-02">
-                layer-02 sub
-            </div>
+            <nav class="layers-view">
+                <ul class="layers-sub">
+                    <!-- super layers will come here -->
+                </ul>
+            </nav>
+            <div title="Add layer" class="tab add-layer">+</div>
         </div>
     </div>
     <div class="viewport">
     </div>
-    <div class="stats">
-
+    <div class="stats component-properties">
     </div>
 </div>
 
 {% endblock %}
 
 {% block extra_js %}
+    <script src="{{ url_for('static', filename='propertiesPanel.js') }}"></script>
     <script src="{{ url_for('static', filename='fetchComponent.js') }}"></script>
 {% endblock %}

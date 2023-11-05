@@ -7,7 +7,7 @@ from flask_session import Session
 import sqlite3
 
 app = Flask(__name__)
-app.config['DATABASE'] = 'website/buildsystems.db'
+app.config['DATABASE'] = 'buildsystems.db'
 
 def get_db():
     db = getattr(g, '_database', None)
@@ -133,9 +133,9 @@ def component_request():
 
     
     # Add layers to assemblies
-    dictSuperAss["Layers"] = dictSupLay
-    dictMainAss["Layers"] = dictMainLay
-    dictSubAss["Layers"] = dictSubLay
+    dictSuperAss["layers"] = dictSupLay
+    dictMainAss["layers"] = dictMainLay
+    dictSubAss["layers"] = dictSubLay
 
 
     # Add assemblies to component
