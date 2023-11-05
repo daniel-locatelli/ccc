@@ -3,9 +3,6 @@ var selectComponent = document.getElementById("select-component");
 var statsTemp = document.querySelector(".stats");
 var selComponent = "";
 
-var viewport = document.querySelector(".viewport");
-viewport.textContent = "JS Works";
-
 selectComponent.addEventListener("change", function () {
     var selComponent = selectComponent.value;
 
@@ -16,7 +13,8 @@ selectComponent.addEventListener("change", function () {
     })
         .then(response => response.json())
         .then(data => {
-            statsTemp.textContent = data.message;
+            string = JSON.stringify(data);
+            statsTemp.textContent = string;
         })
         .catch(error => {
             console.error("Error:", error);

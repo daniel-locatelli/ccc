@@ -43,9 +43,3 @@ assemblyTabs.forEach(function(tab, index) {
         assemblyLayers[index].style.display = 'block';
     });
 });
-
-
-// Get select value
-var selectComponent = document.getElementById("select-component");
-var statsTemp = document.querySelector(".stats");
-var selComponent = "";

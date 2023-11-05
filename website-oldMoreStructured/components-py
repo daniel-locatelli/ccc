@@ -1,0 +1,100 @@
+from flask import Blueprint, Flask, g, render_template, request
+import sqlite3
+
+components = Blueprint("components", __name__)
+
+def get_db():
+        db = getattr(g, '_database', None)
+        if db is None:
+            db = g._database = sqlite3.connect('website/buildsystems.db')
+            db.row_factory = sqlite3.Row
+            return db
+
+@components.route("/api/component", methods=["POST"])
+def component_request():
+    # Get string from the frontend
+    data = request.get_json()
+    selectedComponent = data.get("data")
+
+    # Get component as a dictionary
+    compQuery = "SELECT * FROM component WHERE id = ?"
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute(compQuery, (selectedComponent,))
+    compQueryResult = cursor.fetchall()
+    cursor.close()
+    dictComp = [dict(row) for row in compQueryResult][0]
+
+    # Get IDs of assemblies used in the component
+    superID = dictComp["super_assembly_id"]
+    mainID = dictComp["main_assembly_id"]
+    subID = dictComp["sub_assembly_id"]
+
+    # General query for assemblies
+    assQuery = "SELECT * FROM assembly WHERE id = ?"
+    # Get super
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute(assQuery, (superID,))
+    superResult = cursor.fetchall()
+    cursor.close()
+    if superResult is not None:
+        dictSuperAss = [dict(row) for row in superResult][0]
+    # Get main
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute(assQuery, (mainID,))
+    mainResult = cursor.fetchall()
+    cursor.close()
+    if mainResult is not None:
+        dictMainAss = [dict(row) for row in mainResult][0]
+    # Get sub
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute(assQuery, (subID,))
+    subResult = cursor.fetchall()
+    cursor.close()
+    if subResult is not None:
+        dictSubAss = [dict(row) for row in subResult][0]
+
+
+    # General query for layers
+    layQuery = "SELECT * FROM layer WHERE assembly_id = ?"
+    # Get super layers
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute(layQuery, (superID,))
+    supLayRes = cursor.fetchall()
+    cursor.close()
+    if supLayRes is not None:
+        dictSupLay = [dict(row) for row in supLayRes]
+    # Get main layers
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute(layQuery, (mainID,))
+    mainLayRes = cursor.fetchall()
+    cursor.close()
+    if mainLayRes is not None:
+        dictMainLay = [dict(row) for row in mainLayRes]
+    # Get super layers
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute(layQuery, (subID,))
+    subLayRes = cursor.fetchall()
+    cursor.close()
+    if subLayRes is not None:
+        dictSubLay = [dict(row) for row in subLayRes]
+
+    
+    # Add layers to assemblies
+    dictSuperAss["Layers"] = dictSupLay
+    dictMainAss["Layers"] = dictMainLay
+    dictSubAss["Layers"] = dictSubLay
+
+
+    # Add assemblies to component
+    dictComp["super_assembly"] = dictSuperAss
+    dictComp["main_assembly"] = dictMainAss
+    dictComp["sub_assembly"] = dictSubAss
+
+    return jsonify(dictComp)
