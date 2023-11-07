@@ -2,9 +2,10 @@
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
 }
-.settings {
+.block-dashboard {
     grid-template-rows: repeat(3, 1fr);
     background-color: var(--bg-tertiary);
+    height: min-content;
 }
 
 .select-container {
@@ -82,6 +83,30 @@ label {
     }
 }
 
+table {
+    width: 100%;
+    height: min-content;
+    border-collapse: collapse;
+    background-color: var(--bg-secondary);
+    table-layout: fixed;
+}
+
+tr {
+    width: 100%;
+}
+
+th, td {
+    word-wrap: break-word;
+    border: 1px solid var(--primary);
+    font-weight: 200;
+    text-align: left;
+    padding-left: 0.5svw;
+    padding-right: 0.5svw;
+    padding-top: 0.5svh;
+    padding-bottom: 0.5svh;
+    font-size: 0.9rem;
+}
+
 .properties-table {
     display: grid;
     padding-left: 1svw;
@@ -96,6 +121,16 @@ label {
     border-bottom: 1px dotted var(--secondary);
 }
 
+h2 {
+    font-weight: 200;
+    font-size: 1rem;
+    text-align: center;
+    padding-left: 1svw;
+    padding-right: 1svw;
+    padding-top: 1svh;
+    padding-bottom: 1svh;
+}
+
 h4 {
     font-weight: 200;
 }
@@ -107,10 +142,6 @@ h4 {
     padding-bottom: 5svh;
     background-color: var(--bg-secondary);
     /* border-bottom: 1px dotted var(--secondary); */
-    & h2 {
-        font-weight: 200;
-        font-size: 1rem;
-    }
 }
 
 .viewport {
@@ -118,32 +149,26 @@ h4 {
     background-color: var(--bg-secondary);
 }
 
-.stats {
-    display: flex;
-    flex-direction: column;
-    height: min-content;
-    background-color: var(--bg-secondary);
-}
 
 .add-layer {
     font-size: 1.5rem;
 }
 
-.key-value-comp {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-left: 0.5svw;
-    padding-right: 0.5svw;
-    padding-top: 0.5svh;
-    padding-bottom: 0.5svh;
-    gap: 1svw;
-}
 
 .key-value-comp p:first-child {
     text-align: right;
 }
 
-@media (max-width: 576px) {
+
+@media (max-width: 700px) {
+    .container {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+}
+
+
+@media (max-width: 360px) {
     .container {
         grid-template-columns: auto;
     }

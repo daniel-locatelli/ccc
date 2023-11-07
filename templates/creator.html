@@ -11,7 +11,8 @@
     <h2>Filters </h2>
 </div>
 <div class="container">
-    <div class="settings">
+    <div class="block-dashboard">
+        <h2>Settings</h2>
         <div class="select-container">
             <!-- <label for="select-component">Component: </label> -->
             <select class="tab" name="component-selector" id="select-component">
@@ -32,18 +33,20 @@
             </ul>
         </nav>
         <div class="assembly-view visible">
-            <div class="properties-table">
-                <div class="property-name">
-                    <p title="Assembly ID">ID</p>
-                    <p title="Assembly category">Category</p>
-                    <p title="Assembly thickness">Thickness [m]</p>
-                </div>
-                <div class="property-super">
-                    <p class="prop-super-id">-</p>
-                    <p class="prop-super-category">-</p>
-                    <p class="prop-super-thickness meters">-</p>
-                </div>
-            </div>
+            <table>
+                <tr>
+                    <th title="Assembly ID">ID</th>
+                    <td class="prop-super-id">-</td>
+                </tr>
+                <tr>
+                    <th title="Assembly category">Category</th>
+                    <td class="prop-super-category">-</td>
+                </tr>
+                <tr>
+                    <th title="Assembly thickness">Thickness [m]</th>
+                    <td class="prop-super-thickness meters">-</td>
+                </tr>
+            </table>
             <nav class="layers-view">
                 <ul class="layers-super">
                     <!-- super layers will come here -->
@@ -52,18 +55,20 @@
             <div title="Add layer" class="tab add-layer">+</div>
         </div>
         <div class="assembly-view">
-            <div class="properties-table">
-                <div class="property-name">
-                    <p title="Assembly ID">ID</p>
-                    <p title="Assembly category">Category</p>
-                    <p title="Assembly thickness">Thickness [m]</p>
-                </div>
-                <div class="property-main">
-                    <p class="prop-main-id">-</p>
-                    <p class="prop-main-category">-</p>
-                    <p class="prop-main-thickness meters">-</p>
-                </div>
-            </div>
+            <table>
+                <tr class="property-name">
+                    <th title="Assembly ID">ID</th>
+                    <td class="prop-main-id">-</td>
+                </tr>
+                <tr>
+                    <th title="Assembly category">Category</th>
+                    <td class="prop-main-category">-</td>
+                </tr>
+                <tr>
+                    <th title="Assembly thickness">Thickness [m]</th>
+                    <td class="prop-main-thickness meters">-</td>
+                </tr>
+            </table>
             <nav class="layers-view">
                 <ul class="layers-main">
                     <!-- super layers will come here -->
@@ -72,18 +77,20 @@
             <div title="Add layer" class="tab add-layer">+</div>
         </div>
         <div class="assembly-view">
-            <div class="properties-table">
-                <div class="property-name">
-                    <p title="Assembly ID">ID</p>
-                    <p title="Assembly category">Category</p>
-                    <p title="Assembly thickness">Thickness [m]</p>
-                </div>
-                <div class="property-sub">
-                    <p class="prop-sub-id">-</p>
-                    <p class="prop-sub-category">-</p>
-                    <p class="prop-sub-thickness meters">-</p>
-                </div>
-            </div>
+            <table>
+                <tr class="property-name">
+                    <th title="Assembly ID">ID</th>
+                    <td class="prop-sub-id">-</td>
+                </tr>
+                <tr>
+                    <th title="Assembly category">Category</th>
+                    <td class="prop-sub-category">-</td>
+                </tr>
+                <tr>
+                    <th title="Assembly thickness">Thickness [m]</th>
+                    <td class="prop-sub-thickness meters">-</td>
+                </tr>
+            </table>
             <nav class="layers-view">
                 <ul class="layers-sub">
                     <!-- super layers will come here -->
@@ -94,7 +101,10 @@
     </div>
     <div class="viewport">
     </div>
-    <div class="stats component-properties">
+    <div class="block-dashboard">
+        <h2>Properties</h2>
+        <table class="stats component-properties">
+        </table>
     </div>
 </div>
 

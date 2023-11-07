@@ -1,4 +1,4 @@
-function addLayerPropertiesKeyValues(layer, keysLayer, valLayer) {
+function addLayerPropertiesKeyValues(layer, layerProperties) {
     let propertyKeys = [
         "category",
         "description",
@@ -10,17 +10,21 @@ function addLayerPropertiesKeyValues(layer, keysLayer, valLayer) {
         "width"
     ];
     propertyKeys.forEach(key => {
+        // Create a row
+        const keyLayerRow = document.createElement("tr");
         // Add keys
-        let p = document.createElement("p")
-        p.innerText = key;
-        keysLayer.append(p)
+        const th = document.createElement("th")
+        th.innerText = key;
+        keyLayerRow.append(th)
         // Add values
         if (layer.hasOwnProperty(key)) {
             const value = layer[key];
-            let p = document.createElement("p")
-             p.innerText = value;
-             valLayer.append(p)
+            const td = document.createElement("td")
+             td.innerText = value;
+             keyLayerRow.append(td)
         }
+        // Append property row to table
+        layerProperties.append(keyLayerRow);
     });
 }
 
@@ -38,18 +42,11 @@ function addLayers(layers, keyLayerTitle, ul) {
         const optionWrapper = document.createElement("div");
         optionWrapper.classList.add(option);
         
-        /// 3 /// Properties wrapper
-        const layerProperties = document.createElement("div");
-        layerProperties.classList.add("properties-table");
+        /// 3 /// Properties table
+        const layerProperties = document.createElement("table");
         layerProperties.style.display = "none";
-
-        /// 3.1 /// Option wrapper as columns ///
-        // Create left column for property keys
-        const keysLayer = document.createElement("div");
-        // Create right column for property values
-        const valLayer = document.createElement("div");
         // Add keys and values
-        addLayerPropertiesKeyValues(layer, keysLayer, valLayer);
+        addLayerPropertiesKeyValues(layer, layerProperties);
 
         /// 4 /// List Item ///// Display only option A
         var level = layer["level"];
@@ -66,8 +63,6 @@ function addLayers(layers, keyLayerTitle, ul) {
         // Add classes to list item
 
         /// 5 /// Append - Create hierachy ///
-        // Append property columns to wrapper
-        layerProperties.append(keysLayer, valLayer);
         // Append options to wrapper
         optionWrapper.append(titleListItem, layerProperties)
         // Append wrapper to list item
@@ -183,9 +178,6 @@ function updateSub(data) {
 function addComponentProperties(data) {
     const compProperties = document.querySelector(".component-properties");
     removeAllChildren(compProperties);
-    // ".properties-component-keys"
-    // ".properties-component-values"
-
     // JSON keys
     propertyKeys = [
         "building_class",
@@ -206,23 +198,23 @@ function addComponentProperties(data) {
         "u_value"
     ];
     propertyKeys.forEach(key => {
-        let keyValueDiv = document.createElement("div");
+        let keyValueRow = document.createElement("tr");
         // Add keys
-        let p = document.createElement("p")
-        p.textContent = key;
-        keyValueDiv.append(p)
+        let th = document.createElement("th")
+        th.textContent = key;
+        keyValueRow.append(th)
         // Add values
         if (data.hasOwnProperty(key)) {
             var value = data[key];
             if (value === "") {
                 value = "-";  
             } 
-            let p = document.createElement("p")
-             p.textContent = value;
-             keyValueDiv.append(p)
+            let td = document.createElement("td")
+            td.textContent = value;
+             keyValueRow.append(td)
         }
-        keyValueDiv.classList.add("key-value-comp");
-        compProperties.append(keyValueDiv);
+        keyValueRow.classList.add("key-value-comp");
+        compProperties.append(keyValueRow);
     });
 }
 
@@ -243,7 +235,7 @@ function tabReactions() {
             tab.classList.toggle("active-tab");
             // Show the selected content div
             if (!openTab) {
-                layerProp[index].style.display = 'grid';
+                layerProp[index].style.display = 'table';
             } else {
                 layerProp[index].style.display = 'none';
             }
