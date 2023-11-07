@@ -103,7 +103,6 @@ def component_request():
     if subResult is not None:
         dictSubAss = [dict(row) for row in subResult][0]
 
-
     # General query for layers
     layQuery = "SELECT * FROM layer WHERE assembly_id = ?"
     # Get super layers
@@ -131,12 +130,10 @@ def component_request():
     if subLayRes is not None:
         dictSubLay = [dict(row) for row in subLayRes]
 
-    
     # Add layers to assemblies
     dictSuperAss["layers"] = dictSupLay
     dictMainAss["layers"] = dictMainLay
     dictSubAss["layers"] = dictSubLay
-
 
     # Add assemblies to component
     dictComp["super_assembly"] = dictSuperAss
@@ -145,6 +142,20 @@ def component_request():
 
     return jsonify(dictComp)
 
+@app.route("/api/materials", methods=["POST"])
+def materials_request():
+
+    # Get component as a dictionary
+    matQuery = "SELECT * FROM material"
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute(matQuery)
+    matQueryResult = cursor.fetchall()
+    cursor.close()
+    dictMat = [dict(row) for row in matQueryResult]
+    print(dictMat)
+
+    return jsonify(dictMat)
 
 if __name__ == '__main__':
     app.run(debug=True)

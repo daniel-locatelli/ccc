@@ -1,0 +1,23 @@
+.popup-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100svw;
+    height: 100svh;
+    background-color: rgba(0, 0, 0, 0.8);;
+}
+
+.popup-material {
+    position: fixed;
+    top: 50svh;
+    left: 50svw;
+    width: 600px;
+    height: 200px;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);;
+    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
